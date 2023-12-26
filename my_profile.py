@@ -12,15 +12,25 @@ def index():
     return render_template("index.html")
 
 
+# Flask (Server Side - Python):
+
+# Flask receives the POST request at the /api/profile endpoint.
+# The profile function in my_profile.py is called.
+
 @app.route('/api/profile', methods=['POST'])
 def profile():
     """Return results from profile form."""
 
-    fullname = request.json['name']
-    # TODO: get the values from the rest of the form
-    # Add them to jsonify
+# The function extracts the JSON data from the request body (name, age, occupation).
+# In your current implementation, only the name, age, and occupation are processed.
     
-    return jsonify({'fullname': fullname, })
+    fullname = request.json['name']
+    age = request.json['age']
+    occupation = request.json['occupation']
+
+    # The server-side code processes the received data (name, age, occupation).
+    # Go to profile.js next
+    return jsonify({'fullname': fullname, 'age': age, 'occupation': occupation})
 
 
 
